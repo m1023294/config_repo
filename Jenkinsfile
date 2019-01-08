@@ -5,15 +5,15 @@ pipeline {
 			steps {
 				git url: 'git://github.com/m1023294/app_repo',
                 branch: 'master'
-			
+				echo 'read success'
 			}
 		}
-		stage('scan') {
+		/*stage('scan') {
             steps {
 				sh 'mvn sonar:sonar -Dsonar.host.url=http://my58965dns.eastus2.cloudapp.azure.com:9000'
 				echo 'scan success'
 			}
-        }
+        }*/
 		stage('build') {
             steps {
 				sh 'mvn clean install'
