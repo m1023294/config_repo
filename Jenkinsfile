@@ -28,5 +28,11 @@ pipeline {
 				echo 'build success'
             }
 		}
+		stage('deploy') {
+            steps {
+				sh props.tomcatDeploy
+				echo 'deploy success'
+            }
+		}
 	}
 }
