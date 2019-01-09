@@ -1,14 +1,20 @@
 pipeline {
     agent { docker { image 'maven:3.3.3' } }
     stages {
+		stage('load') {
+			steps {
+				props = readProperties file : 'pipeline.properties'
+				echo 'load success'
+			}
+		}
 		stage('read') {
 			steps {
-				git url: 'git://github.com/m1023294/app_repo',
-                branch: 'master'
+				git url: props.gitUrl,
+                branch: props.branch
 				echo 'read success'
 			}
 		}
-		stage('scan') {
+		/*stage('scan') {
             steps {
 				sh 'mvn sonar:sonar -Dsonar.host.url=http://my58965dns.eastus2.cloudapp.azure.com:9000'
 				echo 'scan success'
@@ -19,6 +25,6 @@ pipeline {
 				sh 'mvn clean install'
 				echo 'build success'
             }
-		}
+		}*/
 	}
 }
