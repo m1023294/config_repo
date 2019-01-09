@@ -3,8 +3,10 @@ pipeline {
     stages {
 		stage('load') {
 			steps {
-				props = readProperties file : 'pipeline.properties'
-				echo 'load success'
+				script {
+					props = readProperties file : 'pipeline.properties'
+					echo 'load success'
+				}
 			}
 		}
 		stage('read') {
