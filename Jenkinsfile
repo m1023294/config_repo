@@ -16,17 +16,17 @@ pipeline {
 				echo 'read success'
 			}
 		}
-		/*stage('scan') {
+		stage('scan') {
             steps {
-				sh 'mvn sonar:sonar -Dsonar.host.url=http://my58965dns.eastus2.cloudapp.azure.com:9000'
+				sh sonarScan
 				echo 'scan success'
 			}
         }
 		stage('build') {
             steps {
-				sh 'mvn clean install'
+				sh mavenBuild
 				echo 'build success'
             }
-		}*/
+		}
 	}
 }
