@@ -16,12 +16,12 @@ pipeline {
 				echo 'read success'
 			}
 		}
-		stage('scan') {
+		/*stage('scan') {
             steps {
-				sh props.SONAR_SCAN+' '_props.SONAR_HOST
+				sh props.SONAR_SCAN+' '+props.SONAR_HOST
 				echo 'scan success'
 			}
-        }
+        }*/
 		stage('build') {
             steps {
 				sh props.MAVEN_BUILD
