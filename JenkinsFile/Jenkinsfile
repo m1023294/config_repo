@@ -28,6 +28,20 @@ pipeline {
 				echo 'build success'
             }
 		}
+		stage('upload') {
+            steps {
+				serverId: jfrog artifactory
+				{
+					'files':[
+						{
+							'pattern': '**/target/*.war',
+							'target': 'Jenkins-snapshot'
+						}
+					]
+				}
+				echo 'upload success'
+            }
+		}
 		stage('deploy') {
             steps {
 				sh props.TOMCAT_DEPLOY+' '+props.TOMCAT_LOCATION
