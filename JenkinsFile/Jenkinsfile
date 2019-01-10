@@ -11,26 +11,26 @@ pipeline {
 		}
 		stage('read') {
 			steps {
-				git url: props.gitUrl,
-                branch: props.branch
+				git url: props.GIT_URL,
+                branch: props.BRANCH
 				echo 'read success'
 			}
 		}
 		stage('scan') {
             steps {
-				sh props.sonarScan
+				sh props.SONAR_SCAN
 				echo 'scan success'
 			}
         }
 		stage('build') {
             steps {
-				sh props.mavenBuild
+				sh props.MAVEN_BUILD
 				echo 'build success'
             }
 		}
 		stage('deploy') {
             steps {
-				sh props.tomcatDeploy
+				sh props.TOMCAT_DEPLOY
 				echo 'deploy success'
             }
 		}
