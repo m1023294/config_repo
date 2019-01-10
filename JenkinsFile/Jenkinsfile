@@ -31,7 +31,7 @@ pipeline {
 		stage('upload') {
             steps {
 				rtUpload (
-					serverId: 'jfrog artifactory'
+					serverId: 'jfrog artifactory',
 						{
 							'files':[
 								{
