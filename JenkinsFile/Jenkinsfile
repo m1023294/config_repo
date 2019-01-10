@@ -30,15 +30,17 @@ pipeline {
 		}
 		stage('upload') {
             steps {
-				serverId: jfrog artifactory
-				{
-					'files':[
+				rtUpload (
+					serverId: jfrog artifactory
 						{
-							'pattern': '**/target/*.war',
-							'target': 'Jenkins-snapshot'
+							'files':[
+								{
+									'pattern': '**/target/*.war',
+									'target': 'Jenkins-snapshot'
+								}
+							]
 						}
-					]
-				}
+					)
 				echo 'upload success'
             }
 		}
