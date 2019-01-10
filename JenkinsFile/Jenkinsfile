@@ -4,7 +4,7 @@ pipeline {
 		stage('load') {
 			steps {
 				script {
-					props = readProperties file: 'pipeline.properties'
+					props = readProperties file: 'Properties/pipeline.properties'
 					echo 'load success'
 				}
 			}
