@@ -33,7 +33,7 @@ pipeline {
 				script {
 					server = Artifactory.server 'jfrog artifactory'
 					uploadSpec = """{
-						'files':[{
+						"files":[{
 							'pattern': 'target/*.war',
 							'target': 'Jenkins-snapshot'
 						}]
