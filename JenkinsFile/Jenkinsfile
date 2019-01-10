@@ -34,8 +34,8 @@ pipeline {
 					server = Artifactory.server props.ARTIFACTORY_ID
 					uploadSpec = """{
 						"files":[{
-							"pattern": props.ARTIFACTORY_PATTERN,
-							"target": props.ARTIFACTORY_TARGET
+							"pattern": "target/*.war",
+							"target": "Jenkins-snapshot"
 						}]
 					}"""
 				server.upload(uploadSpec) 	
