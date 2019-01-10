@@ -31,11 +31,11 @@ pipeline {
 		stage('upload') {
             steps {
 				script {
-					server = Artifactory.server 'jfrog artifactory'
+					server = Artifactory.server props.ARTIFACTORY_ID
 					uploadSpec = """{
 						"files":[{
-							"pattern": "target/*.war",
-							"target": "Jenkins-snapshot"
+							"pattern": props.ARTIFACTORY_PATTERN,
+							"target": props.ARTIFACTORY_TARGET
 						}]
 					}"""
 				server.upload(uploadSpec) 	
