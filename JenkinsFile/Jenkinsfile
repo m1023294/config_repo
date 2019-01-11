@@ -1,9 +1,10 @@
 pipeline {
     agent any
     stages {
-		stage('load') {
+		stage('clone') {
 			steps {
 				clonerepo("https://github.com/m1023294/util_repo", 'master');
+				echo 'clone success'
 				javaCiUtility = load "java/java-ci"
 				javaCiUtility.execute();
 			}
