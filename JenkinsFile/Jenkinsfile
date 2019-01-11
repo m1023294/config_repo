@@ -4,7 +4,7 @@ pipeline {
 		stage('clone') {
 			steps {
 				script {
-					sh 'wget https://github.com/m1023294/util_repo'
+					sh 'git clone https://github.com/m1023294/util_repo'
 					echo 'clone success'
 					javaCiUtility=load 'java/java-ci'
 					echo 'load success'
