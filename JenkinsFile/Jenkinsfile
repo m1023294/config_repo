@@ -6,9 +6,8 @@ pipeline {
 				script {
 					sh 'rm -rf util_repo'
 					sh 'git clone https://github.com/m1023294/util_repo'
-					echo 'clone success'
 					javaCiUtility=load 'util_repo/java/java-ci-cd.groovy'
-					echo 'load success'
+					echo 'clone success'
 					javaCiUtility.execute();
 				}
 			}
