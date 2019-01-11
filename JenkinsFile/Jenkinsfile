@@ -5,6 +5,7 @@ pipeline {
 			steps {
 				script {
 					props = readProperties file: 'Properties/pipeline.properties'
+					buildNo=BUILD_NUMBER
 					echo 'load success'
 				}
 			}
@@ -24,7 +25,7 @@ pipeline {
         }*/
 		stage('build') {
             steps {
-				sh props.MAVEN_BUILD
+				sh props.MAVEN_BUILD+buildNo
 				echo 'build success'
             }
 		}
