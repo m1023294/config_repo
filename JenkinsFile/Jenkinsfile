@@ -4,9 +4,10 @@ pipeline {
 		stage('clone') {
 			steps {
 				script {
-					clonerepo("https://github.com/m1023294/util_repo", 'master');
+					git url: 'git://github.com/m1023294/util_repo',
+                    branch: 'master'
 					echo 'clone success'
-					javaCiUtility = load 'java/java-ci'
+					javaCiUtility = load '/java/java-ci'
 					javaCiUtility.execute();
 				}
 			}
