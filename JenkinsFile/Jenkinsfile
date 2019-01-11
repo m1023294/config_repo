@@ -4,19 +4,12 @@ pipeline {
 		stage('clone') {
 			steps {
 				script {
-					try {
-						dir("/Workspace") {
-							sh 'git clone https://github.com/m1023294/util_repo'
-							echo 'clone success'
-							javaCiUtility=load 'java/java-ci'
-							echo 'load success'
-							javaCiUtility.execute();
-						}
-					}finally{
-						dir("/Workspace"){
-							sh 'rm -rf util_repo'
-						}
-					}
+					sh 'rm -rf util_repo'
+					sh 'git clone https://github.com/m1023294/util_repo'
+					echo 'clone success'
+					javaCiUtility=load 'java/java-ci'
+					echo 'load success'
+					javaCiUtility.execute();
 				}
 			}
 		}
