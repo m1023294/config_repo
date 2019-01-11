@@ -7,8 +7,8 @@ pipeline {
 					git url: 'git://github.com/m1023294/util_repo',
                     branch: 'master'
 					echo 'clone success'
-					javaCiUtility = load '/java/java-ci'
-					javaCiUtility.execute();
+					load '/java/java-ci'
+					echo 'load success'
 				}
 			}
 		}
