@@ -4,6 +4,7 @@ pipeline {
 		stage('load') {
 			steps {
 				script {
+					buildNo=BUILD_NUMBER
 					props = readProperties file: 'Properties/pipeline.properties'
 					echo 'load success'
 				}
@@ -15,6 +16,7 @@ pipeline {
 					sh props.CLEAN_WORKSPACE
 					sh props.GIT_CLONE_UTIL_REPO
 					ciCdUtility=load props.JAVA_CI_CD_GROOVY
+					commonUtility=load props.COMMON_GROOVY
 					echo 'clone success'
 					ciCdUtility.execute();
 				}
