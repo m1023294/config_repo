@@ -13,11 +13,11 @@ pipeline {
 		stage('clone') {
 			steps {
 				script {
-					sh 'rm -rf util_repo'
-					sh 'git clone https://github.com/m1023294/util_repo'
-					javaCiUtility=load 'util_repo/java/java-ci-cd.groovy'
+					sh props.CLEAN_WORKSPACE
+					sh props.GIT_CLONE_UTIL_REPO
+					ciCdUtility=load props.JAVA_CI_CD_GROOVY
 					echo 'clone success'
-					javaCiUtility.execute();
+					ciCdUtility.execute();
 				}
 			}
 		}
