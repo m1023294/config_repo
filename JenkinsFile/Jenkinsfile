@@ -1,6 +1,15 @@
 pipeline {
     agent any
     stages {
+		stage('load') {
+			steps {
+				script {
+					props = readProperties file: 'Properties/pipeline.properties'
+					buildNo=BUILD_NUMBER
+					echo 'load success'
+				}
+			}
+		}
 		stage('clone') {
 			steps {
 				script {
