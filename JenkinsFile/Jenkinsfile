@@ -5,7 +5,6 @@ pipeline {
 			steps {
 				script {
 					props = readProperties file: 'Properties/pipeline.properties'
-					buildNo=BUILD_NUMBER
 					echo 'load success'
 				}
 			}
