@@ -13,7 +13,6 @@ pipeline {
 		stage('clone') {
 			steps {
 				script {
-					sh props.CLEAN_WORKSPACE
 					sh props.GIT_CLONE_UTIL_REPO
 					ciCdUtility=load props.JAVA_CI_CD_GROOVY
 					commonUtility=load props.COMMON_GROOVY
@@ -27,6 +26,7 @@ pipeline {
         always {
 			script {
 				commonUtility.sendEmail();
+				sh props.CLEAN_WORKSPACE
 			}
         }
     }
