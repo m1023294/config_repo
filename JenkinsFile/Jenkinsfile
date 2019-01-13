@@ -25,18 +25,10 @@ pipeline {
 	}
 	post {
         success {
-            emailext ( 
-                subject: '${DEFAULT_SUBJECT}', 
-                body: '${DEFAULT_CONTENT}',
-                to: 'niranjan.hampannavar@mindtree.com'
-                );
+            commonUtility.sendEmail();
         }
         failure {
-            emailext ( 
-                subject: '${DEFAULT_SUBJECT}', 
-                body: '${DEFAULT_CONTENT}',
-                to: 'niranjan.hampannavar@mindtree.com'
-                );
+            commonUtility.sendEmail();
         }
     }
 }
