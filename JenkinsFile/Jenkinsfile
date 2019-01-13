@@ -25,10 +25,14 @@ pipeline {
 	}
 	post {
         success {
-            commonUtility.sendEmail();
+			script {
+				commonUtility.sendEmail();
+			}
         }
         failure {
-            commonUtility.sendEmail();
+			script {
+				commonUtility.sendEmail();
+			}
         }
     }
 }
