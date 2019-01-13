@@ -25,6 +25,9 @@ pipeline {
 	}
 	post {
         always {
+			script {
+				currentBuild.result = currentBuild.currentResult
+			}
             step([$class: 'Mailer',
             notifyEveryUnstableBuild: true,
             recipients: "niranjan.hampannavar@mindtree.com",
