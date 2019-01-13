@@ -24,14 +24,19 @@ pipeline {
 		}
 	}
 	post {
-        always {
-			script {
-				currentBuild.result = currentBuild.currentResult
-			}
-            step([$class: 'Mailer',
-            notifyEveryUnstableBuild: true,
-            recipients: "niranjan.hampannavar@mindtree.com",
-            sendToIndividuals: true])
+        success {
+            emailext ( 
+                subject: '${DEFAULT_SUBJECT}', 
+                body: '${DEFAULT_CONTENT}',
+                to: 'niranjan.hampannavar@mindtree.com'
+                );
+        }
+        failure {
+            emailext ( 
+                subject: '${DEFAULT_SUBJECT}', 
+                body: '${DEFAULT_CONTENT}',
+                to: 'niranjan.hampannavar@mindtree.com'
+                );
         }
     }
 }
