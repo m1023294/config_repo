@@ -24,12 +24,7 @@ pipeline {
 		}
 	}
 	post {
-        success {
-			script {
-				commonUtility.sendEmail();
-			}
-        }
-        failure {
+        always {
 			script {
 				commonUtility.sendEmail();
 			}
