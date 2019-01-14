@@ -4,7 +4,8 @@ pipeline {
 		stage('load') {
 			steps {
 				script {
-					buildNo=BUILD_NUMBER
+					buildNo=env.BUILD_NUMBER
+					jobName=env.JOB_NAME
 					props = readProperties file: 'Properties/pipeline.properties'
 					echo 'load success'
 				}
@@ -26,7 +27,7 @@ pipeline {
         always {
 			script {
 				commonUtility.sendEmail();
-				sh props.CLEAN_WORKSPACE
+				commonUtility.cleanWorkspace();
 			}
         }
     }
