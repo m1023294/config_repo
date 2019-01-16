@@ -3,25 +3,21 @@ pipeline {
     stages {
 		stage('stageCheckoutPipeline') {
 			steps {
-				script {
-					buildNo=env.BUILD_NUMBER
-					jobName=env.JOB_NAME
-					props = readProperties file: 'Properties/pipeline.properties'
-					sh props.GIT_CLONE_UTIL_REPO
-					ciCdUtility=load props.JAVA_CI_CD_GROOVY
-					commonUtility=load props.COMMON_GROOVY
-					print 'Checkout Pipeline Success'
-					ciCdUtility.execute();
-				}
+				buildNo=env.BUILD_NUMBER
+				jobName=env.JOB_NAME
+				props = readProperties file: 'Properties/pipeline.properties'
+				sh props.GIT_CLONE_UTIL_REPO
+				ciCdUtility=load props.JAVA_CI_CD_GROOVY
+				commonUtility=load props.COMMON_GROOVY
+				print 'Checkout Pipeline Success'
+				ciCdUtility.execute();
 			}
 		}
 	}
 	post {
         always {
-			script {
-				commonUtility.sendEmail();
-				commonUtility.cleanWorkspace();
-			}
-        }
+			commonUtility.sendEmail();
+			commonUtility.cleanWorkspace();
+		}
     }
 }
