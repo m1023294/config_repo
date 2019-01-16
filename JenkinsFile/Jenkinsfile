@@ -1,23 +1,16 @@
 pipeline {
     agent any
     stages {
-		stage('load') {
+		stage('stageCheckoutPipeline') {
 			steps {
 				script {
 					buildNo=env.BUILD_NUMBER
 					jobName=env.JOB_NAME
 					props = readProperties file: 'Properties/pipeline.properties'
-					echo 'load success'
-				}
-			}
-		}
-		stage('clone') {
-			steps {
-				script {
 					sh props.GIT_CLONE_UTIL_REPO
 					ciCdUtility=load props.JAVA_CI_CD_GROOVY
 					commonUtility=load props.COMMON_GROOVY
-					echo 'clone success'
+					print 'Checkout Pipeline Success'
 					ciCdUtility.execute();
 				}
 			}
